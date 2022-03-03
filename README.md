@@ -32,3 +32,7 @@ Prepare for folder structure
 - npm i cookie-parser
 - require cookie-parser and update app.use
 - add res.cookie in controller of "login"
+###### refactor
+- adding JWT usage
+- adding Cookie usage
+###### jwt.config.js
