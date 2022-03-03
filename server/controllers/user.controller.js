@@ -1,6 +1,8 @@
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+// require dotenv
+require('dotenv').config();
 
 
 module.exports = {
@@ -16,13 +18,13 @@ module.exports = {
                 // we do the same when we registered a user we giving JWT token and cookie stored
                 const userToken = jwt.sign({
                     id: user._id
-                }, process.env.ACCESS_TOKEN_SECRET)
+                }, `${process.env.ACCESS_TOKEN_SECRET}`)
 
                 res.cookie(
                     "usertoken",
                     userToken,
                     secret,
-                    { httpOnly: false })
+                    { httpOnly: true })
                     .json({
                         message: "success log in"
                     })
@@ -49,7 +51,9 @@ module.exports = {
         // if password is correct we giving the token and cookie for the user
         // const payload = { id: user_id }; add direct to userToken
         // JWT token store
-        const userToken = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, /* optional {expiresIn: "1h"}*/)
+        const userToken = jwt.sign(
+            { id: user._id },
+            `${process.env.ACCESS_TOKEN_SECRET}`, /* optional {expiresIn: "1h"}*/)
         res.json({ userToken: userToken })
 
         // cookie store

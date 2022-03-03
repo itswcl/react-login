@@ -19,7 +19,4 @@ require('./config/mongoose.config')(DB)
 // route connector
 require('./routes/user.route')(app)
 
-// require dotenv
-require('dotenv').config();
-
 app.listen(PORT, () => { console.log(`server up on port: ${PORT}`) })
