@@ -1,11 +1,17 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = 8000;
 const DB = "user_db";
 
-app.use(cors(), express.json(), express.urlencoded({ extended: true }))
+app.use(
+    cookieParser(),
+    cors({ credentials: true, origin: 'http://localhost:3000' }),
+    express.json(),
+    express.urlencoded({ extended: true })
+)
 
 // config connector
 require('./config/mongoose.config')(DB)
