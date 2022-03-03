@@ -4,7 +4,7 @@ Prepare for folder structure
 - /server
 - touch server.js
 - npm init -y
-- npm i express mongoose cors bcrypt dotenv
+- npm i express mongoose cors bcrypt dotenv jsonwebtoken
 - /config, /models, /controllers, /routes
 ######
 - update server.js
@@ -21,3 +21,4 @@ Prepare for folder structure
 - adding user controller for register
 ######
 - adding user route for register
+- remember to link in server.js
