@@ -49,7 +49,7 @@ module.exports = {
 
         // cookie store
         res.cookie(
-            "userToken",
+            "usertoken",
             userToken,
             secret,
             { httpOnly: true })
@@ -59,8 +59,8 @@ module.exports = {
     },
 
     logout: (req, res) => {
-        res.clearCookie('userToken');
-        res.sendStatus(200;)
+        res.clearCookie('usertoken');
+        res.sendStatus(200);
     }
 }
 
