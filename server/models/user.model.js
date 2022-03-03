@@ -32,12 +32,12 @@ const UserSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-
+// a virtual storage for confirmPassword. only one time use
 UserSchema.virtual('confirmPassword')
     .get(() => this._confirmPassword)
     .set(value => this._confirmPassword = value);
 
-
+// compare password and confirmPassword if same
 UserSchema.pre('validate', function(next) {
     if(this.password !== this.confirmPassword) {
         this.invalidate('confirmPassword', 'Password must match confirm password');
@@ -45,8 +45,9 @@ UserSchema.pre('validate', function(next) {
     next();
 })
 
-
+// hash the password
 UserSchema.pre('save', function(next) {
+    // bcrypt will create sale to combine 10 fine value of password
     bcrypt.hash(this.password, 10)
         .then(hash => {
             this.password = hash;
