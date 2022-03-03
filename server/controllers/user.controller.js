@@ -15,6 +15,8 @@ module.exports = {
     create: (req, res) => {
         User.create(req.body)
             .then(user => {
+                res.json({ user: user })
+                console.log(user)
                 // we do the same when we registered a user we giving JWT token and cookie stored
                 const userToken = jwt.sign({
                     id: user._id
@@ -28,10 +30,8 @@ module.exports = {
                     .json({
                         message: "success log in"
                     })
-
-                res.json({ user: user });
-                console.log("success register")
             })
+
             .catch(err => res.status(400).json({ message: "❌❌❌ Something Wrong create user ❌❌❌", error: err }))
     },
 
@@ -41,7 +41,7 @@ module.exports = {
         // console.log(req.body);
         const user = await User.findOne({ email: req.body.email })
         if (user === null) return res.sendStatus(400);
-        console.log(user);
+        // console.log(user);
 
         // if we pass the email test now we need to check the password
         // compare the bcrypt hash password and the one we stored
@@ -53,18 +53,15 @@ module.exports = {
         // JWT token store
         const userToken = jwt.sign(
             { id: user._id },
-            `${process.env.ACCESS_TOKEN_SECRET}`, /* optional {expiresIn: "1h"}*/)
+            `${process.env.ACCESS_TOKEN_SECRET}`)
         res.json({ userToken: userToken })
 
         // cookie store
-        res.cookie(
-            "usertoken",
-            userToken,
-            secret,
-            { httpOnly: true })
-            .json({
-                message: "success log in"
+        res
+            .cookie("usertoken", userToken, secret, {
+                httpOnly: true
             })
+            .json({ msg: "success!" });
     },
 
     logout: (req, res) => {
