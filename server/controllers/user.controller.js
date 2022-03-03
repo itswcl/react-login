@@ -21,7 +21,7 @@ module.exports = {
     login: (req, res) => {
         const payload = {id: user_id};
 
-        jwt.sign(payload, process.env.SECRET_KEY)
+        jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET)
     }
 }
 
