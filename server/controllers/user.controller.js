@@ -1,4 +1,6 @@
 const User = require('../models/user.model')
+const jwt = require('jsonwebtoken')
+
 
 module.exports = {
     findAll: (req, res) => {
@@ -14,6 +16,12 @@ module.exports = {
                 console.log("success register")
             })
             .catch(err => res.status(400).json({ message: "❌❌❌ Something Wrong create user ❌❌❌", error: err }))
+    },
+
+    login: (req, res) => {
+        const payload = {id: user_id};
+
+        jwt.sign(payload, process.env.SECRET_KEY)
     }
 }
 

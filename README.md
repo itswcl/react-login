@@ -22,3 +22,6 @@ Prepare for folder structure
 ######
 - adding user route for register
 - remember to link in server.js
+######
+- require('crypto').randomBytes(64).toString('hex')
+- to generate random token for key
