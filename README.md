@@ -4,13 +4,14 @@ Prepare for folder structure
 - /server
 - touch server.js
 - npm init -y
-- npm i express mongoose cors bcrypt dotenv jsonwebtoken
+- npm i express mongoose cors
 - /config, /models, /controllers, /routes
 ######
 - update server.js
 - add mongoose.config.js
 - update server.js import config
 ######
+- npm i bcrypt
 - adding user model
 - firstName, lastName, email, password
 - timestamps
@@ -23,5 +24,11 @@ Prepare for folder structure
 - adding user route for register
 - remember to link in server.js
 ######
+- npm i dotenv jsonwebtoken
+- type node in terminal to create token
 - require('crypto').randomBytes(64).toString('hex')
-- to generate random token for key
+- generate random token for key
+###### back to server.js
+- npm i cookie-parser
+- require cookie-parser and update app.use
+- add res.cookie in controller of "login"
