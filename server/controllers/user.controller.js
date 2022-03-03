@@ -11,6 +11,7 @@ module.exports = {
         User.create(req.body)
             .then(user => {
                 res.json({user: user});
+                console.log("success register")
             })
             .catch(err => res.status(400).json({ message: "❌❌❌ Something Wrong create user ❌❌❌", error: err }))
     }
