@@ -1,8 +1,13 @@
 import React from 'react'
 
 const Login = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Submit")
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <h1 className='text-center'>Log In</h1>
             <div className='mb-3 row'>
                 <label htmlFor="" className='col-sm-2 col-form-label'>Email</label>
