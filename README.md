@@ -36,3 +36,5 @@ Prepare for folder structure
 - adding JWT usage
 - adding Cookie usage
 ###### jwt.config.js
+----------------------------
+# to the client site of register/login
