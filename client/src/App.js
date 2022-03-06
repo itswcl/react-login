@@ -1,8 +1,8 @@
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Register from './components/Register';
-import Login from './components/Login';
-import Main from './components/Main';
+import Register from './Components/Register';
+import Login from './Components/Login';
+import Main from './Components/Main';
 // practice useContext import useContext 03052022
 import React from 'react'
 

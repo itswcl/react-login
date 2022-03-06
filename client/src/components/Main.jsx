@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Login from './Login';
 import axios from 'axios'
 import Toolbar from './Toolbar';
+import { ThemeContext } from '../Context/ThemeContext'
 
 const admin = {
     firstName: "test",
@@ -11,12 +12,8 @@ const admin = {
 }
 
 // declare ThemeContext by create context 03052022
-const ThemeContext = React.createContext(admin)
-
 
 const Main = () => {
-
-
     const [currentUser, setCurrentUser] = useState({
         firstName: "",
         lastName: "",
@@ -25,11 +22,8 @@ const Main = () => {
 
     const [error, setError] = useState("");
 
-
-
     const login = (detail) => {
         // console.log(detail)
-
         if (detail.email === admin.email && detail.password === admin.password) {
             setCurrentUser({
                 ...currentUser,
@@ -60,17 +54,17 @@ const Main = () => {
             ) : (
                 <>
                     <Login login={login} error={error} />
+                    {/* practice useContext 03052022 */}
+                    {/* provider to pass current theme */}
+                    {/* any component can read */}
+                    {/* dark as default */}
+                    {/* this is props way */}
+                    {/* <Toolbar theme="dark" /> */}
                     <ThemeContext.Provider value={admin}>
                         <Toolbar />
                     </ThemeContext.Provider>
                 </>
             )}
-            {/* practice useContext 03052022 */}
-            {/* provider to pass current theme */}
-            {/* any component can read */}
-            {/* dark as default */}
-            {/* this is props way */}
-            {/* <Toolbar theme="dark" /> */}
         </>
     )
 }

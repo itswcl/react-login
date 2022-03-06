@@ -1,6 +1,6 @@
 // practice useContext
 import React, { useContext, useState } from 'react'
-import { ThemeContext } from './Main'
+import { ThemeContext } from '../Context/ThemeContext'
 
 const ThemeButton = () => {
     const [user, setUser] = useState("")
