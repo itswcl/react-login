@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 // get the log in en error we pass from Main
 const Login = ({ login, error }) => {
     // receive from user enter user detail
@@ -12,8 +13,11 @@ const Login = ({ login, error }) => {
     const handleSubmit = (e) => {
         // prevent refresh
         e.preventDefault();
-
         login(detail);
+        setDetail({
+            email:"",
+            password:""
+        })
     }
 
     return (

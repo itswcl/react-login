@@ -3,8 +3,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Main from './components/Main';
+// practice useContext import useContext 03052022
+import React from 'react'
 
 function App() {
+
   return (
     <div className="container">
       <Switch>
@@ -22,5 +25,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
