@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Login from './Login';
 import axios from 'axios'
 import Toolbar from './Toolbar';
-import { ThemeContext } from '../Context/ThemeContext'
+// we dont need ThemeContext if we being pass from parent
+// import { ThemeContext } from '../Context/ThemeContext'
 
 const admin = {
     firstName: "test",
@@ -11,6 +12,7 @@ const admin = {
     password: "password"
 }
 
+// we dont need ThemeContext if we being pass from parent
 // declare ThemeContext by create context 03052022
 
 const Main = () => {
@@ -19,7 +21,6 @@ const Main = () => {
         lastName: "",
         email: "",
     })
-
     const [error, setError] = useState("");
 
     const login = (detail) => {
@@ -54,15 +55,16 @@ const Main = () => {
             ) : (
                 <>
                     <Login login={login} error={error} />
+                    {/* we dont need ThemeContext if we being pass from parent */}
                     {/* practice useContext 03052022 */}
                     {/* provider to pass current theme */}
                     {/* any component can read */}
                     {/* dark as default */}
                     {/* this is props way */}
                     {/* <Toolbar theme="dark" /> */}
-                    <ThemeContext.Provider value={admin}>
-                        <Toolbar />
-                    </ThemeContext.Provider>
+                    {/* <ThemeContext.Provider value={{ admin, setTheme, theme }}> */}
+                    <Toolbar />
+                    {/* </ThemeContext.Provider> */}
                 </>
             )}
         </>
@@ -70,4 +72,3 @@ const Main = () => {
 }
 
 export default Main
-export { ThemeContext };

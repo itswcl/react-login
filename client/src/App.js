@@ -4,12 +4,15 @@ import Register from './Components/Register';
 import Login from './Components/Login';
 import Main from './Components/Main';
 // practice useContext import useContext 03052022
-import React from 'react'
+import React, { useState } from 'react'
+import { themes, ThemeContext } from "./Context/ThemeContext";
 
 function App() {
+  // set style in Main
+  const [theme, setTheme] = useState(themes.light)
 
   return (
-    <div className="container">
+    <div className="container" style={theme}>
       <Switch>
         {/* login route */}
         <Route path="/login">
@@ -20,8 +23,11 @@ function App() {
           <Register />
         </Route>
       </Switch>
-
-      <Main />
+      {/* pass over the theme and setTheme along */}
+      {/* we pass context from App.js and all the children having the access to ThemeContext */}
+      <ThemeContext.Provider value={{theme, setTheme}}>
+        <Main />
+      </ThemeContext.Provider>
     </div>
   );
 }

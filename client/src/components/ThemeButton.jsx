@@ -1,19 +1,24 @@
 // practice useContext
 import React, { useContext, useState } from 'react'
-import { ThemeContext } from '../Context/ThemeContext'
+import { ThemeContext, themes } from '../Context/ThemeContext'
 
 const ThemeButton = () => {
-    const [user, setUser] = useState("")
+    // const {theme, setTheme} = useContext(ThemeContext)
 
-    const context = useContext(ThemeContext);
+    // pass from App.js themeContext.provider
+    const { theme, setTheme } = useContext(ThemeContext);
+
+    const themeUpdate = () => {
+        // compared what the default is
+        theme.color === "black"
+            // update to opposite based on click
+            ? setTheme(themes.dark)
+            : setTheme(themes.light)
+    }
 
     return (
-        <>  {
-            user !== ""
-                ? <p>{JSON.stringify(user)}</p>
-                : null
-            }
-            <button theme={context} onClick={e => setUser(context)}>Click to Test</button>
+        <>
+            <button onClick={themeUpdate}>Change Theme</button>
         </>
     )
 }
